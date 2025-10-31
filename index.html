@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberWow Tambomar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+<!-- Cabecera -->
+<header class="relative overflow-hidden text-center py-[3.15rem]">
+  <div class="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 bg-[length:200%_200%] animate-gradient"></div>
+  <div class="relative z-10">
+    <img 
+      src="Recursos/logo_cyber.png" 
+      alt="Logo Tambomar" 
+      class="mx-auto h-16 md:h-20 object-contain animate-pulse-smooth drop-shadow-lg"
+    >
+  </div>
+</header>
+
+<!-- Banner principal (escritorio) -->
+<section id="banner"
+  class="hidden md:flex relative items-center justify-between px-8 py-[10.1rem] transition-all duration-500 select-none cursor-pointer bg-cover bg-center bg-no-repeat"
+  style="background-image: url('Banner/atun_prom1.png');"
+  onclick="cambiarPromo(event)">
+  <div class="absolute inset-0 bg-black/10"></div>
+
+  <div class="relative text-white z-10 text-center md:text-left max-w-md">
+    <h1 id="banner-title" class="text-4xl font-extrabold mb-2">Filete de Atún</h1>
+    <p id="banner-desc" class="text-lg mb-2">Promoción especial del CyberWow Tambomar</p>
+    <p id="banner-extra" class="text-2xl font-semibold mb-4">12 Unidades a S/48.00 🔥</p>
+    <a id="banner-btn" href="#" target="_blank" onclick="event.stopPropagation()" 
+      class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-5 h-5">
+      Comprar por WhatsApp
+    </a>
+    <p class="text-sm text-gray-200 mt-4">👉 Haz clic AQUÍ para ver la otra promoción</p>
+  </div>
+
+  <div class="relative w-64 h-64 md:w-96 md:h-96"></div>
+</section>
+
+<!-- Banner móvil -->
+<section id="banner-mobile" class="md:hidden flex flex-col items-center text-center px-4 py-8 overflow-hidden relative">
+  <!-- Imagen fija del producto -->
+  <img id="banner-mobile-img" src="Productos/atunac.png" alt="Producto" class="w-64 h-64 object-contain mb-4 rounded-lg shadow-md transition-all duration-500">
+
+  <!-- Contenedor deslizable -->
+  <div id="promo-slider" class="w-full">
+    <div class="promo-slide" data-title="Filete de Atún" data-desc="Promoción especial del CyberWow Tambomar" data-extra="12 Unidades a S/48.00 🔥"></div>
+    <div class="promo-slide" data-title="Filete de Atún" data-desc="Promoción especial del CyberWow Tambomar" data-extra="Caja de 24 Unidades a S/95.00 🔥"></div>
+    <div class="promo-slide" data-title="Filete de Atún" data-desc="Promoción especial del CyberWow Tambomar" data-extra="Caja de 48 Unidades a S/180.00 🔥"></div>
+  </div>
+
+  <!-- Texto dinámico -->
+  <h1 id="banner-mobile-title" class="text-2xl font-bold text-gray-800 mb-2 transition-all duration-500">Filete de Atún</h1>
+  <p id="banner-mobile-desc" class="text-gray-600 text-sm mb-1 transition-all duration-500">Promoción especial del CyberWow Tambomar</p>
+  <p id="banner-mobile-extra" class="text-lg font-semibold text-gray-800 mb-4 transition-all duration-500">12 Unidades a S/48.00 🔥</p>
+
+  <!-- Botón de compra -->
+  <a id="banner-mobile-btn" href="#" target="_blank"
+     class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="w-5 h-5">
+    Comprar por WhatsApp
+  </a>
+
+  <p class="text-xs text-gray-400 mt-4">⬅️ Desliza para ver la siguiente promoción ➡️</p>
+</section>
+
+
+<!-- Productos -->
+<section class="relative max-w-6xl mx-auto py-12 px-6 overflow-hidden">
+  <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Elige tu Favorito</h2>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div onclick="seleccionarProducto('Filete de Atún', 'Atún', 'Productos/atunac.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/atunac.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Atún">
+      <h3 class="font-semibold text-gray-800">Filete de Atún</h3>
+      <h4 class="text-gray-400 text-sm">En Aceite Vegetal</h4>
+    </div>
+    <div onclick="seleccionarProducto('Filete de Caballa', 'Caballa', 'Productos/caballaac.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/caballaac.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Caballa">
+      <h3 class="font-semibold text-gray-800">Filete de Caballa</h3>
+      <h4 class="text-gray-400 text-sm">En Aceite Vegetal</h4>
+    </div>
+    <div onclick="seleccionarProducto('Filete de Bonito', 'Bonito', 'Productos/bonitoac.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/bonitoac.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Bonito">
+      <h3 class="font-semibold text-gray-800">Filete de Bonito</h3>
+      <h4 class="text-gray-400 text-sm">En Aceite Vegetal</h4>
+    </div>
+    <div onclick="seleccionarProducto('Filete de Jurel', 'Jurel', 'Productos/jurelac.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/jurelac.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Jurel">
+      <h3 class="font-semibold text-gray-800">Filete de Jurel</h3>
+      <h4 class="text-gray-400 text-sm">En Aceite Vegetal</h4>
+    </div>
+    <div onclick="seleccionarProducto('Caballa Dingley', 'Caballa Dingley', 'Productos/caballad.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/caballad.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Caballa Dingley">
+      <h3 class="font-semibold text-gray-800">Filete de Caballa</h3>
+      <h4 class="text-gray-400 text-sm">Aceite Vegetal - Dingley</h4>
+    </div>
+    <div onclick="seleccionarProducto('Bonito Dingley', 'Bonito Dingley', 'Productos/bonitod.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/bonitod.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Bonito Dingley">
+      <h3 class="font-semibold text-gray-800">Filete de Bonito</h3>
+      <h4 class="text-gray-400 text-sm">Aceite Vegetal - Dingley</h4>
+    </div>
+    <div onclick="seleccionarProducto('Anchoveta Dingley', 'Anchoveta Dingley', 'Productos/anchod.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/anchod.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Anchoveta Dingley">
+      <h3 class="font-semibold text-gray-800">Entero de Anchoveta</h3>
+      <h4 class="text-gray-400 text-sm">En Aceite Vegetal</h4>
+    </div>
+    <div onclick="seleccionarProducto('Bonito en Agua y Sal', 'Bonito en agua y sal', 'Productos/bonitoag.png')" class="cursor-pointer bg-white rounded-xl shadow hover:shadow-lg p-4 text-center transition">
+      <img src="Productos/bonitoag.png" class="w-30 h-30 mx-auto mb-3 object-contain" alt="Bonito en agua y sal">
+      <h3 class="font-semibold text-gray-800">Filete de Bonito</h3>
+      <h4 class="text-gray-400 text-sm">En Agua y Sal</h4>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 border-t border-gray-200 mt-12 py-10">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h3 class="text-lg font-semibold text-gray-800 mb-3">📍 Distritos habilitados para reparto</h3>
+      <p class="text-gray-500 text-sm mb-6">Por el momento realizamos envíos únicamente dentro de Lima Metropolitana.</p>
+
+      <ul class="flex flex-wrap justify-center gap-3 text-gray-700 text-sm">
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Miraflores</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Breña</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Surco</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Barranco</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">San Borja</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">La Molina</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Pueblo Libre</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Jesús María</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Magdalena</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Surquillo</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Chorrillos</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">San Miguel</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Los Olivos</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Rimac</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Lima Centro</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">San martin de Porres</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Comas</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">Independencia</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">San Juan de Miraflores</li>
+        <li class="px-3 py-1 bg-white rounded-full shadow-sm">San Juan de Lurigancho</li>
+      </ul>
+
+      <p class="text-gray-400 text-xs mt-8">
+        © 2025 Tambomar. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+<!-- Info adicional -->
+<section class="bg-gray-50 border-t border-gray-200 py-4">
+  <div class="max-w-6xl mx-auto px-6 text-left text-gray-600 text-sm leading-relaxed">
+    📦 <strong>Entregas:</strong> 48 a 72 horas tras confirmar compra y pago. 
+    <strong>Pago previo:</strong> depósito o Yape. 
+    <strong>Delivery:</strong> costo según distrito.
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+const promociones = {
+  "Atún": [
+    { unidades: 12, precio: "S/ 48.00", fondo: "Banner/atun_prom1.png" },
+    { unidades: 24, precio: "S/ 96.00", fondo: "Banner/atun_prom2.png" },
+    { unidades: 48, precio: "S/ 192.00", fondo: "Banner/atun_prom3.png" }
+  ],
+  "Caballa": [
+    { unidades: 12, precio: "S/ 44.00", fondo: "Banner/caballa_prom1.png" },
+    { unidades: 24, precio: "S/ 88.00", fondo: "Banner/caballa_prom2.png" },
+    { unidades: 48, precio: "S/ 176.00", fondo: "Banner/caballa_prom3.png" }
+  ],
+  "Bonito": [
+    { unidades: 12, precio: "S/ 44.00", fondo: "Banner/bonito_prom1.png" },
+    { unidades: 24, precio: "S/ 88.00", fondo: "Banner/bonito_prom2.png" },
+    { unidades: 48, precio: "S/ 176.00", fondo: "Banner/bonito_prom3.png" }
+  ],
+  "Jurel": [
+    { unidades: 12, precio: "S/ 40.00", fondo: "Banner/jurel_prom1.png" },
+    { unidades: 24, precio: "S/ 80.00", fondo: "Banner/jurel_prom2.png" },
+    { unidades: 48, precio: "S/ 160.00", fondo: "Banner/jurel_prom3.png" }
+  ],
+  "Caballa Dingley": [
+    { unidades: 12, precio: "S/ 40.00", fondo: "Banner/caballad_prom1.png", nombreMostrar: "Filete de Caballa" },
+    { unidades: 24, precio: "S/ 80.00", fondo: "Banner/caballad_prom2.png", nombreMostrar: "Filete de Caballa" },
+    { unidades: 48, precio: "S/ 160.00", fondo: "Banner/caballad_prom3.png", nombreMostrar: "Filete de Caballa" }
+  ],
+  "Bonito Dingley": [
+    { unidades: 12, precio: "S/ 40.00", fondo: "Banner/bonitod_prom1.png", nombreMostrar: "Filete de Bonito" },
+    { unidades: 24, precio: "S/ 80.00", fondo: "Banner/bonitod_prom2.png", nombreMostrar: "Filete de Bonito" },
+    { unidades: 48, precio: "S/ 160.00", fondo: "Banner/bonitod_prom3.png", nombreMostrar: "Filete de Bonito" }
+  ],
+  "Anchoveta Dingley": [
+    { unidades: 12, precio: "S/ 40.00", fondo: "Banner/anchovetad_prom1.png", nombreMostrar: "Entero de Anchoveta" },
+    { unidades: 24, precio: "S/ 80.00", fondo: "Banner/anchovetad_prom2.png", nombreMostrar: "Entero de Anchoveta" },
+    { unidades: 48, precio: "S/ 160.00", fondo: "Banner/anchovetad_prom3.png", nombreMostrar: "Entero de Anchoveta" }
+  ],
+  "Bonito en agua y sal": [
+    { unidades: 12, precio: "S/ 42.00", fondo: "Banner/bonitoas_prom1.png", nombreMostrar: "Filete de Bonito" },
+    { unidades: 24, precio: "S/ 84.00", fondo: "Banner/bonitoas_prom2.png", nombreMostrar: "Filete de Bonito" },
+    { unidades: 48, precio: "S/ 168.00", fondo: "Banner/bonitoas_prom3.png", nombreMostrar: "Filete de Bonito" }
+  ]
+};
+
+let productoActual = "Atún";
+let nombreMostrar = "Filete de Atún";
+let promoActual = 0;
+
+// Seleccionar producto (clic)
+function seleccionarProducto(nombreMostrarParam, nombreProducto, imagenProducto) {
+  productoActual = nombreProducto;
+  nombreMostrar = nombreMostrarParam;
+  promoActual = 0;
+  actualizarBanner(imagenProducto);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Cambiar promoción (clic escritorio)
+function cambiarPromo(event) {
+  const mitad = window.innerWidth / 2;
+  const totalPromos = promociones[productoActual].length;
+  promoActual = event.clientX > mitad ? (promoActual + 1) % totalPromos : (promoActual - 1 + totalPromos) % totalPromos;
+  actualizarBanner();
+}
+
+// Actualizar banner (ambos modos)
+function actualizarBanner(imagenProducto) {
+  const promo = promociones[productoActual][promoActual];
+  const titulo = promo.nombreMostrar || nombreMostrar;
+
+  // Escritorio
+  document.getElementById("banner").style.backgroundImage = `url('${promo.fondo}')`;
+  document.getElementById("banner-title").innerText = titulo;
+  document.getElementById("banner-desc").innerText = "Promoción especial del CyberWow Tambomar";
+  document.getElementById("banner-extra").innerText = `${promo.unidades} Unidades a ${promo.precio} 🔥`;
+  document.getElementById("banner-btn").href = 
+    `https://wa.me/51941386339?text=${encodeURIComponent(`Estoy interesado en la promoción de ${promo.unidades} unidades del producto ${titulo}.`)}`;
+
+   // Móvil (mantiene la imagen fija del producto)
+  if (imagenProducto) {
+    document.getElementById("banner-mobile-img").src = imagenProducto;
+  }
+  document.getElementById("banner-mobile-title").innerText = titulo;
+  document.getElementById("banner-mobile-desc").innerText = "Promoción especial del CyberWow Tambomar";
+  document.getElementById("banner-mobile-extra").innerText = `${promo.unidades} Unidades a ${promo.precio} 🔥`;
+  document.getElementById("banner-mobile-btn").href = 
+    `https://wa.me/51941386339?text=${encodeURIComponent(`Estoy interesado en la promoción de ${promo.unidades} unidades del producto ${titulo}.`)}`;
+}
+
+// --- DESLIZAMIENTO EN MÓVIL --- //
+let startX = 0;
+const bannerMobile = document.getElementById("banner-mobile");
+
+if (bannerMobile) {
+  bannerMobile.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  bannerMobile.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const diffX = startX - endX;
+    const totalPromos = promociones[productoActual].length;
+
+    if (Math.abs(diffX) > 50) {
+      promoActual = diffX > 0 
+        ? (promoActual + 1) % totalPromos 
+        : (promoActual - 1 + totalPromos) % totalPromos;
+      actualizarBanner();
+    }
+  });
+}
+
+// Inicializar primer producto
+seleccionarProducto("Filete de Atún", "Atún", "Productos/atunac.png");
+</script>
+
+<script>
+  const slides = document.querySelectorAll('#promo-slider .promo-slide');
+  let currentSlide = 0;
+
+  const title = document.getElementById('banner-mobile-title');
+  const desc = document.getElementById('banner-mobile-desc');
+  const extra = document.getElementById('banner-mobile-extra');
+
+  function showSlide(index) {
+    const slide = slides[index];
+    title.textContent = slide.dataset.title;
+    desc.textContent = slide.dataset.desc;
+    extra.textContent = slide.dataset.extra;
+  }
+
+  showSlide(currentSlide);
+
+  let startX = 0;
+  document.getElementById('promo-slider').addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  document.getElementById('promo-slider').addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    } else if (endX - startX > 50) {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+  });
+</script>
+
+</body>
+</html>
